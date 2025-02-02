@@ -26,11 +26,13 @@ workflows:
         script: |
           flutter --version
           echo "Using Flutter version: $(flutter --version)"
-          flutter pub get
+          flutter doctor
+          flutter pub get # Ensure all dependencies are fetched
 
       # Step 2: Generate environment files
       - name: Generate environment files
         script: |
+          flutter pub get # Ensure all packages are installed
           flutter pub run build_runner build --delete-conflicting-outputs
           
       # Step 3: Fix Gradle issues and ensure SDK compatibility
