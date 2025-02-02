@@ -61,7 +61,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - "your-email@example.com"
+          - "your-email@exmple.com"
         notify:
           success: true
           failure: true
