@@ -82,7 +82,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - ${NOTIFICATION_EMAIL}
+          - your.email@example.com  # Replace this with your actual email address
         notify:
           success: true
           failure: true
