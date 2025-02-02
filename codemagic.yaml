@@ -8,9 +8,9 @@ workflows:
       groups:
         - flutter_credentials
       vars:
-        FLUTTER_VERSION: "3.13.0" # Use the Flutter version matching your project
+        FLUTTER_VERSION: "3.13.0"
         ANDROID_SDK_VERSION: "34"
-        BUILD_NUMBER: $(date +%s) # Auto-incrementing build number
+        BUILD_NUMBER: ${CODEMAGIC_BUILD_NUMBER}
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
@@ -21,60 +21,68 @@ workflows:
         - push
         - pull_request
     scripts:
-      # Step 1: Set up Flutter environment and get dependencies
       - name: Set up Flutter environment
         script: |
-          flutter --version
-          echo "Using Flutter version: $(flutter --version)"
-          flutter doctor
-          flutter pub get # Ensure all dependencies are fetched
-
-      # Step 2: Generate environment files
+          # Ensure Flutter is using the correct Dart SDK
+          flutter config --no-analytics
+          flutter doctor -v
+          
+          # Clean any existing build artifacts
+          flutter clean
+          
+          # Remove the build runner cache
+          rm -rf .dart_tool/
+          rm -rf build/
+          
+          # Get dependencies with verbose output
+          flutter pub get --verbose
+          
+          # Verify Dart SDK installation
+          dart --version
+          
       - name: Generate environment files
         script: |
-          flutter pub get # Ensure all packages are installed
-          flutter pub run build_runner build --delete-conflicting-outputs
+          # Ensure build_runner is properly installed
+          flutter pub add --dev build_runner
+          flutter pub add --dev json_serializable
           
-      # Step 3: Fix Gradle issues and ensure SDK compatibility
-      - name: Fix Gradle issues (force SDK compatibility)
+          # Run pub get again to ensure dependencies
+          flutter pub get
+          
+          # Run build_runner with verbose output
+          dart run build_runner clean
+          dart run build_runner build --delete-conflicting-outputs --verbose
+
+      - name: Fix Gradle issues
         script: |
           echo "org.gradle.jvmargs=-Xmx4096M" >> android/gradle.properties
           echo "android.useAndroidX=true" >> android/gradle.properties
           echo "android.enableJetifier=true" >> android/gradle.properties
+          
+          # Update SDK versions in build.gradle
           sed -i -e 's/compileSdkVersion.*/compileSdkVersion 34/' android/app/build.gradle
           sed -i -e 's/targetSdkVersion.*/targetSdkVersion 34/' android/app/build.gradle
-          
-          # Fix missing Dart SDK issue and ensure proper setup
-          flutter doctor
           
           # Clean and get dependencies again
           flutter clean
           flutter pub get
 
-      # Step 4: Build APK
       - name: Build APK
         script: |
           flutter build apk --release --build-number=$BUILD_NUMBER
 
-      # Step 5: Build App Bundle (AAB)
-      - name: Build App Bundle (AAB)
+      - name: Build App Bundle
         script: |
           flutter build appbundle --release --build-number=$BUILD_NUMBER
 
-      # Step 6: Archive artifacts for download
-      - name: Archive artifacts
-        script: |
-          mkdir -p build_outputs
-          cp build/app/outputs/flutter-apk/app-release.apk build_outputs/
-          cp build/app/outputs/bundle/release/app-release.aab build_outputs/
-
     artifacts:
-      - build_outputs/**
-      
+      - build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/bundle/release/app-release.aab
+    
     publishing:
       email:
         recipients:
-          - "your-email@example.com"
+          - ${NOTIFICATION_EMAIL}
         notify:
           success: true
           failure: true
