@@ -21,16 +21,19 @@ workflows:
         - push
         - pull_request
     scripts:
+      # Step 1: Set up Flutter environment and get dependencies
       - name: Set up Flutter environment
         script: |
           flutter --version
           echo "Using Flutter version: $(flutter --version)"
           flutter pub get
 
+      # Step 2: Generate environment files
       - name: Generate environment files
         script: |
           flutter pub run build_runner build --delete-conflicting-outputs
-
+          
+      # Step 3: Fix Gradle issues and ensure SDK compatibility
       - name: Fix Gradle issues (force SDK compatibility)
         script: |
           echo "org.gradle.jvmargs=-Xmx4096M" >> android/gradle.properties
@@ -38,18 +41,25 @@ workflows:
           echo "android.enableJetifier=true" >> android/gradle.properties
           sed -i -e 's/compileSdkVersion.*/compileSdkVersion 34/' android/app/build.gradle
           sed -i -e 's/targetSdkVersion.*/targetSdkVersion 34/' android/app/build.gradle
-          rm -rf ~/.gradle/caches/ # Clear Gradle cache
+          
+          # Fix missing Dart SDK issue and ensure proper setup
+          flutter doctor
+          
+          # Clean and get dependencies again
           flutter clean
           flutter pub get
 
+      # Step 4: Build APK
       - name: Build APK
         script: |
           flutter build apk --release --build-number=$BUILD_NUMBER
 
+      # Step 5: Build App Bundle (AAB)
       - name: Build App Bundle (AAB)
         script: |
           flutter build appbundle --release --build-number=$BUILD_NUMBER
 
+      # Step 6: Archive artifacts for download
       - name: Archive artifacts
         script: |
           mkdir -p build_outputs
@@ -58,10 +68,11 @@ workflows:
 
     artifacts:
       - build_outputs/**
+      
     publishing:
       email:
         recipients:
-          - "your-email@exmple.com"
+          - "your-email@example.com"
         notify:
           success: true
           failure: true
