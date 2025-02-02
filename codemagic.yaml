@@ -11,9 +11,11 @@ workflows:
         FLUTTER_VERSION: "3.13.0" # Use the Flutter version matching your project
         ANDROID_SDK_VERSION: "34"
         BUILD_NUMBER: $(date +%s) # Auto-incrementing build number
-      paths:
-        - $HOME/.pub-cache
-        - /usr/local/share/android-sdk
+      cache:
+        cache_paths:
+          - $FLUTTER_ROOT/.pub-cache
+          - ~/.gradle/caches
+          - ~/.gradle/wrapper
     triggering:
       events:
         - push
