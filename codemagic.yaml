@@ -10,7 +10,7 @@ workflows:
       vars:
         FLUTTER_VERSION: "3.13.0"
         ANDROID_SDK_VERSION: "34"
-        BUILD_NUMBER: ${CODEMAGIC_BUILD_NUMBER}
+        BUILD_NUMBER: 10029283
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
