@@ -1,0 +1,51 @@
+name: Build Flutter Android APK 2
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: # ✅ Allows manual triggering from GitHub UI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Generate Keystore
+        run: |
+          keytool -genkey -v -keystore release-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass ${{ secrets.KEYSTORE_PASSWORD }} -keypass ${{ secrets.KEY_PASSWORD }} \
+            -alias ${{ secrets.KEY_ALIAS }} -dname "CN=Your Name, OU=Your Org, O=Your Company, L=Your City, S=Your State, C=Your Country"
+
+      - name: Move Keystore
+        run: mv release-keystore.jks android/app/release-keystore.jks
+
+      - name: Setup Environment Variables
+        run: |
+          echo "ANDROID_KEYSTORE_PATH=android/app/release-keystore.jks" >> $GITHUB_ENV
+          echo "ANDROID_KEYSTORE_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
+          echo "ANDROID_KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+          echo "ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
