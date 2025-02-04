@@ -1,6 +1,6 @@
 pluginManagement {
     dependencyResolutionManagement {
-        repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+        repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     }
 
     def flutterSdkPath = {
