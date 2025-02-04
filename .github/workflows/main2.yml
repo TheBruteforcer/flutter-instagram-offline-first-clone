@@ -52,6 +52,7 @@ jobs:
           rm -rf ~/.gradle/caches
           flutter pub get
           cd android && ./gradlew clean && cd ..
+          gradle wrapper
           flutter build apk --release
 
       - name: Upload APK Artifact
