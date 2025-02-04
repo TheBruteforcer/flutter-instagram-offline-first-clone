@@ -35,7 +35,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.emilzulufov.flutter_instagram_offline_first_clone"
+        applicationId "com.oe_works"
         minSdk 21
         targetSdk 34
         versionCode flutterVersionCode.toInteger()
