@@ -62,17 +62,17 @@ android {
     productFlavors {
         production {
             dimension "default"
-            applicationIdSuffix ""
+            applicationIdSuffix ".wsg"
             manifestPlaceholders = [appName: "Flutter Instagram Offline First Clone"]
         }
         staging {
             dimension "default"
-            applicationIdSuffix ".stg"
+            applicationIdSuffix ".wsg"
             manifestPlaceholders = [appName: "[STG] Flutter Instagram Offline First Clone"]
         }
         development {
             dimension "default"
-            applicationIdSuffix ".dev"
+            applicationIdSuffix ".wsg"
             manifestPlaceholders = [appName: "[DEV] Flutter Instagram Offline First Clone"]
         }
     }
