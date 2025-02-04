@@ -1,4 +1,4 @@
-name: Build Flutter Android APK 2
+name: Build Flutter Android APK
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch: # ✅ Allows manual triggering from GitHub UI
+  workflow_dispatch: # ✅ Allows manual triggering
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # ✅ Updated to latest version
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -45,7 +45,7 @@ jobs:
         run: flutter build apk --release
 
       - name: Upload APK Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # ✅ Fixed deprecated action
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
