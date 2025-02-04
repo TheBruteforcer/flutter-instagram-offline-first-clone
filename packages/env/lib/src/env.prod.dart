@@ -5,7 +5,7 @@ import 'package:envied/envied.dart';
 /// Dev Environment variables. Used to access environment variables in the app.
 /// {@endtemplate}
 @Envied(path: '.env.dev', obfuscate: true)
-abstract class EnvDev {
+abstract class EnvProd {
   /// Supabase url secret.
   @EnviedField(varName: 'SUPABASE_URL', obfuscate: true)
   static String supabaseUrl = "https://hwagajxvaxirdgxrfjvv.supabase.co";
