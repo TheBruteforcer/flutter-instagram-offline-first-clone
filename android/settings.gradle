@@ -1,4 +1,8 @@
 pluginManagement {
+    dependencyResolutionManagement {
+        repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    }
+
     def flutterSdkPath = {
         def properties = new Properties()
         file("local.properties").withInputStream { properties.load(it) }
@@ -12,10 +16,12 @@ pluginManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }  // ✅ أضف هذا السطر
         gradlePluginPortal()
-        maven { url 'https://jitpack.io' } // ✅ Added JitPack for missing dependencies
     }
 }
+
+
 
 plugins {
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
