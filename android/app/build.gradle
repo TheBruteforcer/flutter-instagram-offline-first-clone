@@ -98,5 +98,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.otaliastudios:transcoder:0.9.1'
     implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'com.otaliastudios:transcoder:0.9.1'
+    implementation 'com.otaliastudios:transcoder:0.10.5'
 }
