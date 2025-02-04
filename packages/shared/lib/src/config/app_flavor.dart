@@ -24,34 +24,34 @@ class AppFlavor extends AppEnv {
   @override
   String getEnv(Env env) => switch (env) {
         Env.supabaseUrl => switch (flavor) {
-            Flavor.development => EnvDev.supabaseUrl,
-            Flavor.production => EnvProd.supabaseUrl,
-            Flavor.staging => EnvProd.supabaseUrl,
+            Flavor.development => "https://hwagajxvaxirdgxrfjvv.supabase.co",
+            Flavor.production => "https://hwagajxvaxirdgxrfjvv.supabase.co",
+            Flavor.staging => "https://hwagajxvaxirdgxrfjvv.supabase.co",
           },
         Env.powerSyncUrl => switch (flavor) {
-            Flavor.development => EnvDev.powersyncUrl,
-            Flavor.production => EnvProd.powersyncUrl,
-            Flavor.staging => EnvProd.powersyncUrl,
+            Flavor.development => "https://67a12f79488578ca45cae343.powersync.journeyapps.com",
+            Flavor.production => "https://67a12f79488578ca45cae343.powersync.journeyapps.com",
+            Flavor.staging => "https://67a12f79488578ca45cae343.powersync.journeyapps.com",
           },
         Env.supabaseAnonKey => switch (flavor) {
-            Flavor.development => EnvDev.supabaseAnonKey,
-            Flavor.production => EnvProd.supabaseAnonKey,
-            Flavor.staging => EnvProd.supabaseAnonKey,
+            Flavor.development => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3YWdhanh2YXhpcmRneHJmanZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg1NTExNjEsImV4cCI6MjA1NDEyNzE2MX0.Q5zZCz-ZxlKcYK7rOWjHyG6V4bbc5_z4H2vA7ge3wdk",
+            Flavor.production => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3YWdhanh2YXhpcmRneHJmanZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg1NTExNjEsImV4cCI6MjA1NDEyNzE2MX0.Q5zZCz-ZxlKcYK7rOWjHyG6V4bbc5_z4H2vA7ge3wdk",
+            Flavor.staging => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3YWdhanh2YXhpcmRneHJmanZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg1NTExNjEsImV4cCI6MjA1NDEyNzE2MX0.Q5zZCz-ZxlKcYK7rOWjHyG6V4bbc5_z4H2vA7ge3wdk",
           },
         Env.fcmServerKey => switch (flavor) {
-            Flavor.development => EnvDev.fcmServerKey,
-            Flavor.production => EnvProd.fcmServerKey,
-            Flavor.staging => EnvProd.fcmServerKey,
+            Flavor.development => "794309841892",
+            Flavor.production => "794309841892",
+            Flavor.staging => "794309841892",
           },
         Env.iOSClientId => switch (flavor) {
-            Flavor.development => EnvDev.iOSClientId,
-            Flavor.production => EnvProd.iOSClientId,
-            Flavor.staging => EnvProd.iOSClientId,
+            Flavor.development => "794309841892-kkdhme2u2r8fup8ijhskjtubudpq1noa.apps.googleusercontent.com",
+            Flavor.production => "794309841892-kkdhme2u2r8fup8ijhskjtubudpq1noa.apps.googleusercontent.com",
+            Flavor.staging => "794309841892-kkdhme2u2r8fup8ijhskjtubudpq1noa.apps.googleusercontent.com",
           },
         Env.webClientId => switch (flavor) {
-            Flavor.development => EnvDev.webClientId,
-            Flavor.production => EnvProd.webClientId,
-            Flavor.staging => EnvProd.webClientId,
+            Flavor.development => "794309841892-6h2mjp3esb9qp7gk7k39pmisc2865kf8.apps.googleusercontent.com",
+            Flavor.production => "794309841892-6h2mjp3esb9qp7gk7k39pmisc2865kf8.apps.googleusercontent.com",
+            Flavor.staging => "794309841892-6h2mjp3esb9qp7gk7k39pmisc2865kf8.apps.googleusercontent.com",
           }
       };
 }
