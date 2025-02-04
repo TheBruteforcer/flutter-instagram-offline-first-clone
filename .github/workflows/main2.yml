@@ -27,20 +27,18 @@ jobs:
 
       - name: Generate Keystore
         run: |
+          mkdir -p android/app/android/app/  # ✅ Ensure directory exists
           keytool -genkeypair -v \
-            -keystore release-keystore.jks \
+            -keystore android/app/android/app/release-keystore.jks \
             -keyalg RSA -keysize 2048 -validity 10000 \
-            -storepass "Omar123$" \
-            -keypass "Omar123$" \
-            -alias "Omar123$" \
+            -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
+            -keypass "${{ secrets.KEY_PASSWORD }}" \
+            -alias "${{ secrets.KEY_ALIAS }}" \
             -dname "CN=Your Name, OU=YourOrg, O=YourCompany, L=YourCity, S=YourState, C=YourCountry"
-
-      - name: Move Keystore
-        run: mv release-keystore.jks android/app/release-keystore.jks
 
       - name: Setup Environment Variables
         run: |
-          echo "ANDROID_KEYSTORE_PATH=android/app/release-keystore.jks" >> $GITHUB_ENV
+          echo "ANDROID_KEYSTORE_PATH=android/app/android/app/release-keystore.jks" >> $GITHUB_ENV
           echo "ANDROID_KEYSTORE_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
           echo "ANDROID_KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
           echo "ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
