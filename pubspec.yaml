@@ -105,4 +105,5 @@ dev_dependencies:
   slang_build_runner: ^3.31.0
 flutter:
   generate: true
+  uses-material-design: true
 
