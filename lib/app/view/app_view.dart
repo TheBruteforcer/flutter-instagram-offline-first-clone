@@ -22,7 +22,7 @@ class AppView extends StatelessWidget {
         return BlocBuilder<ThemeModeBloc, ThemeMode>(
           builder: (context, themeMode) {
             return AnimatedSwitcher(
-              duration: 350.ms,
+              duration: const Duration(milliseconds: 350),
               child: MediaQuery(
                 data: MediaQuery.of(context).copyWith(
                   textScaler: TextScaler.noScaling,
@@ -38,7 +38,7 @@ class AppView extends StatelessWidget {
 
                     return Stack(
                       children: [
-                        child!,
+                        if (child != null) child,
                         AppSnackbar(key: snackbarKey),
                         AppLoadingIndeterminate(key: loadingIndeterminateKey),
                       ],
@@ -48,8 +48,12 @@ class AppView extends StatelessWidget {
                   theme: const AppTheme().theme,
                   darkTheme: const AppDarkTheme().theme,
                   locale: locale,
-                  localizationsDelegates:
-                      AppLocalizations.localizationsDelegates,
+                  localizationsDelegates: const [
+                    AppLocalizations.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
                   supportedLocales: AppLocalizations.supportedLocales,
                 ),
               ),
