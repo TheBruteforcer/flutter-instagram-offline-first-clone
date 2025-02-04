@@ -51,6 +51,7 @@ jobs:
           rm -rf android/.gradle
           rm -rf ~/.gradle/caches
           flutter pub get
+          dart pub upgrade
           cd android && ./gradlew clean && cd ..
           gradle wrapper
           flutter build apk --release
