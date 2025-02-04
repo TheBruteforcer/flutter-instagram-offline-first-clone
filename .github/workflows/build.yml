@@ -18,7 +18,9 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.13.0' # Specify the Flutter version you want to use
-
+      - name: Upgrade Flutter
+        run: flutter upgrade
+        
       - name: Install dependencies
         run: flutter pub get
 
