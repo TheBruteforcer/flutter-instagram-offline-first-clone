@@ -81,7 +81,7 @@ android {
         release {
             signingConfig signingConfigs.release
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             signingConfig signingConfigs.debug
@@ -94,9 +94,8 @@ flutter {
 }
 
 dependencies {
-    def kotlin_version = "1.8.0" // ✅ Defined properly
+    def kotlin_version = "1.8.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.otaliastudios:transcoder:0.9.1' // ✅ Fix missing dependency
+    implementation 'com.otaliastudios:transcoder:0.9.1'
     implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'com.otaliastudios:transcoder:0.9.1' 
 }
