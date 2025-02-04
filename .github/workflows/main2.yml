@@ -27,9 +27,13 @@ jobs:
 
       - name: Generate Keystore
         run: |
-          keytool -genkey -v -keystore release-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 \
-            -storepass ${{ secrets.KEYSTORE_PASSWORD }} -keypass ${{ secrets.KEY_PASSWORD }} \
-            -alias ${{ secrets.KEY_ALIAS }} -dname "CN=Your Name, OU=Your Org, O=Your Company, L=Your City, S=Your State, C=Your Country"
+          keytool -genkeypair -v \
+            -keystore release-keystore.jks \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass "${{ secrets.KEYSTORE_PASSWORD }}" \
+            -keypass "${{ secrets.KEY_PASSWORD }}" \
+            -alias "${{ secrets.KEY_ALIAS }}" \
+            -dname "CN=Your Name, OU=YourOrg, O=YourCompany, L=YourCity, S=YourState, C=YourCountry"
 
       - name: Move Keystore
         run: mv release-keystore.jks android/app/release-keystore.jks
