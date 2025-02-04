@@ -105,4 +105,4 @@ dev_dependencies:
   slang_build_runner: ^3.31.0
 flutter:
   generate: true
-  very_good_analysis: ^6.0.0
+
