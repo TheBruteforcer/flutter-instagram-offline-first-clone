@@ -17,7 +17,7 @@ def flutterVersionCode = localProperties.getProperty('flutter.versionCode', '1')
 def flutterVersionName = localProperties.getProperty('flutter.versionName', '1.0')
 
 android {
-    namespace "com.emilzulufov.flutter_instagram_offline_first_clone"
+    namespace "com.oe_works"
     compileSdk 34
     ndkVersion flutter.ndkVersion
 
