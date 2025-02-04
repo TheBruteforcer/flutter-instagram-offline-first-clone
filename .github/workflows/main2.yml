@@ -53,6 +53,7 @@ jobs:
           flutter pub get
           dart pub upgrade
           flutter gen-l10n
+          flutter pub get
           cd android && ./gradlew clean && cd ..
           gradle wrapper
           flutter build apk --release
