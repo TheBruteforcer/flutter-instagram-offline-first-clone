@@ -29,7 +29,7 @@ jobs:
         run: |
           mkdir -p android/app/android/app/  # ✅ Ensure directory exists
           keytool -genkeypair -v \
-            -keystore android/app/android/app/release-keystore.jks \
+            -keystore android/app/android/app/android/app/release-keystore.jks \
             -keyalg RSA -keysize 2048 -validity 10000 \
             -storepass "Omar123$" \
             -keypass "Omar123$" \
