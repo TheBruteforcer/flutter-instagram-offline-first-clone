@@ -6,7 +6,8 @@ import 'package:flutter_instagram_offline_first_clone/l10n/l10n.dart';
 import 'package:flutter_instagram_offline_first_clone/selector/selector.dart';
 import 'package:shared/shared.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 class AppView extends StatelessWidget {
   const AppView({super.key});
 
