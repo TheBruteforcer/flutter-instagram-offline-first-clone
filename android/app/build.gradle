@@ -1,7 +1,6 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
+    id "org.jetbrains.kotlin.android"
     id "com.google.gms.google-services"
     id 'kotlin-kapt'
 }
@@ -46,17 +45,22 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(System.getenv("ANDROID_KEYSTORE_PATH"))
-            keyAlias System.getenv("ANDROID_KEYSTORE_ALIAS")
-            keyPassword System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
-            storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
+            def keystorePath = System.getenv("ANDROID_KEYSTORE_PATH") ?: file("release-key.jks").absolutePath
+            def keyAlias = System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "your-key-alias"
+            def keyPassword = System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "your-key-password"
+            def storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "your-store-password"
+
+            storeFile file(keystorePath)
+            keyAlias keyAlias
+            keyPassword keyPassword
+            storePassword storePassword
         }
 
         debug {
-            storeFile file(System.getenv("ANDROID_KEYSTORE_PATH"))
-            keyAlias System.getenv("ANDROID_KEYSTORE_ALIAS")
-            keyPassword System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
-            storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
+            storeFile file(System.getenv("ANDROID_KEYSTORE_PATH") ?: file("debug-key.jks").absolutePath)
+            keyAlias System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "debug-key-alias"
+            keyPassword System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "debug-key-password"
+            storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "debug-store-password"
         }
     }
 
@@ -82,7 +86,7 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            minifyEnabled true
+            minifyEnabled false // Disable for now, enable after testing
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -96,15 +100,15 @@ flutter {
 }
 
 dependencies {
-    def kotlin_version = "1.8.22"  // Downgraded to stable version
-    def appcompat_version = "1.6.1" // Defined missing version
-    def material_version = "1.9.0"  // Defined missing version
+    def kotlin_version = "1.9.0"  
+    def appcompat_version = "1.6.1" 
+    def material_version = "1.9.0"  
     def multidex_version = "2.0.1"
+
     implementation "androidx.multidex:multidex:$multidex_version"
-    implementation 'io.flutter:flutter_embedding_debug:1.0.0-3316dd8728419ad3534e3f6112aa6291f587078a'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.otaliastudios:transcoder:0.10.5' // Removed duplicate version
-    implementation "androidx.core:core-ktx:1.12.0" // Updated from 1.6.0
+    implementation "androidx.core:core-ktx:1.12.0" 
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
+    implementation 'com.otaliastudios:transcoder:0.10.5'
 }
