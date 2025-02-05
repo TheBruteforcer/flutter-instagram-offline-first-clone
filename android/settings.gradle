@@ -3,7 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        gradlePluginPortal
+        gradlePluginPortal()  // ✅ Fixed
         maven { url 'https://storage.googleapis.com/download.flutter.io' }
     }
 }
@@ -13,7 +13,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter()
         maven { url 'https://jitpack.io' }
         maven { url 'https://storage.googleapis.com/download.flutter.io' }
     }
@@ -30,5 +29,4 @@ def flutterSdkPath = {
 }()
 
 includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
-
 include ":app"
