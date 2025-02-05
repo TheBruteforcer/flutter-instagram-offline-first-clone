@@ -51,8 +51,6 @@ jobs:
           flutter clean
           rm -rf android/.gradle
           rm -rf ~/.gradle/caches
-          flutter pub get
-          dart pub upgrade
           flutter gen-l10n
           flutter pub get
           flutter pub add powersync_flutter_libs
