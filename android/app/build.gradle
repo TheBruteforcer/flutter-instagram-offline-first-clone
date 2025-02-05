@@ -41,6 +41,7 @@ android {
         targetSdk 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -98,6 +99,8 @@ dependencies {
     def kotlin_version = "1.8.22"  // Downgraded to stable version
     def appcompat_version = "1.6.1" // Defined missing version
     def material_version = "1.9.0"  // Defined missing version
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
     implementation 'io.flutter:flutter_embedding:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.otaliastudios:transcoder:0.10.5' // Removed duplicate version
