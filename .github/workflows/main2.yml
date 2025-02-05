@@ -25,6 +25,8 @@ jobs:
         run: |
           sudo apt update
           sudo apt install android-sdk adb
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+          export PATH=$ANDROID_HOME/platform-tools:$PATH
           sdkmanager --update
           sdkmanager --install "platform-tools" "build-tools;35.0.1" "platforms;android-35"
           adb --version
