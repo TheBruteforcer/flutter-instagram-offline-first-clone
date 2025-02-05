@@ -42,12 +42,16 @@ android {
         versionName flutterVersionName
         multiDexEnabled true
     }
+
+
+import java.util.Base64
+
 signingConfigs {
     release {
         def keystorePath = System.getenv("ANDROID_KEYSTORE_PATH") ?: file("release-key.jks").absolutePath
-        def keyAlias = System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "your-key-alias"
-        def keyPassword = """${System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "your-key-password"}"""
-        def storePassword = """${System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "your-store-password"}"""
+        def keyAlias = new String(Base64.decoder.decode(System.getenv("ANDROID_KEYSTORE_ALIAS") ?: ""), "UTF-8")
+        def keyPassword = new String(Base64.decoder.decode(System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: ""), "UTF-8")
+        def storePassword = new String(Base64.decoder.decode(System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: ""), "UTF-8")
 
         storeFile file(keystorePath)
         keyAlias keyAlias
@@ -57,9 +61,9 @@ signingConfigs {
 
     debug {
         storeFile file(System.getenv("ANDROID_KEYSTORE_PATH") ?: file("debug-key.jks").absolutePath)
-        keyAlias System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "debug-key-alias"
-        keyPassword """${System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "debug-key-password"}"""
-        storePassword """${System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "debug-store-password"}"""
+        keyAlias new String(Base64.decoder.decode(System.getenv("ANDROID_KEYSTORE_ALIAS") ?: ""), "UTF-8")
+        keyPassword new String(Base64.decoder.decode(System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: ""), "UTF-8")
+        storePassword new String(Base64.decoder.decode(System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: ""), "UTF-8")
     }
 }
 
