@@ -67,6 +67,7 @@ jobs:
           flutter pub get
           cd android && ./gradlew clean && cd ..
           gradle wrapper
+          ./gradlew wrapper --gradle-version 8.1 --distribution-type=bin
           flutter pub cache repair
           flutter doctor -v
           flutter build apk --release
