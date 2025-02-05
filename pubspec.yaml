@@ -10,10 +10,6 @@ dependencies:
   app_links: ^3.4.3
   blurhash: ^1.1.1
   camera: ^0.10.5+9
-  firebase_core: ^2.24.2
-  firebase_messaging: ^14.7.10
-  firebase_remote_config: ^4.3.8
-  flutter_image_compress: ^2.1.0
   flutter_plugin_android_lifecycle: ^2.0.17
   fluttertoast: ^8.2.4
   google_sign_in: ^6.1.6
