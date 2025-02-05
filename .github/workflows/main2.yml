@@ -21,6 +21,17 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.27.0'
+      - name: Prequestes
+        run: |
+          sudo apt update
+          sudo apt install android-sdk adb
+          sdkmanager --update
+          sdkmanager --install "platform-tools" "build-tools;35.0.1" "platforms;android-35"
+          adb --version
+          sudo snap install android-studio --classic
+          sudo apt install ninja-build
+
+
 
       - name: Install Dependencies
         run: flutter pub get
