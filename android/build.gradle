@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
         maven { url 'https://jitpack.io' }
         maven {
-            url 'http://download.flutter.io'
+            url 'https://storage.googleapis.com/download.flutter.io'
             allowInsecureProtocol = true
               }
     }
@@ -24,7 +24,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
         maven { url "https://plugins.gradle.org/m2/" }
         maven {
-            url 'http://download.flutter.io'
+            url 'https://storage.googleapis.com/download.flutter.io'
             allowInsecureProtocol = true
               }
     }
