@@ -42,26 +42,36 @@ android {
         versionName flutterVersionName
         multiDexEnabled true
     }
-        signingConfigs {
-            release {
-                def keystorePath = System.getenv("ANDROID_KEYSTORE_PATH") ?: file("release-key.jks").absolutePath
-                def keyAlias = System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "your-key-alias"
-                def keyPassword = """${System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "your-key-password"}"""
-                def storePassword = """${System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "your-store-password"}"""
-        
-                storeFile file(keystorePath)
-                keyAlias keyAlias
-                keyPassword keyPassword
-                storePassword storePassword
-            }
-        }
 
+    signingConfigs {
+        release {
+            def keystorePath = System.getenv("ANDROID_KEYSTORE_PATH") ?: file("release-key.jks").absolutePath
+            def keyAlias = System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "your-key-alias"
+            def keyPassword = """${System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "your-key-password"}"""
+            def storePassword = """${System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "your-store-password"}"""
+
+            storeFile file(keystorePath)
+            keyAlias keyAlias
+            keyPassword keyPassword
+            storePassword storePassword
+        }
 
         debug {
             storeFile file(System.getenv("ANDROID_KEYSTORE_PATH") ?: file("debug-key.jks").absolutePath)
             keyAlias System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "debug-key-alias"
             keyPassword System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "debug-key-password"
             storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "debug-store-password"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false // Disable for now, enable after testing
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -83,17 +93,6 @@ android {
             manifestPlaceholders = [appName: "[DEV] Flutter Instagram Offline First Clone"]
         }
     }
-
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-            minifyEnabled false // Disable for now, enable after testing
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            signingConfig signingConfigs.debug
-        }
-    }
 }
 
 flutter {
@@ -101,14 +100,14 @@ flutter {
 }
 
 dependencies {
-    def kotlin_version = "1.9.0"  
-    def appcompat_version = "1.6.1" 
-    def material_version = "1.9.0"  
+    def kotlin_version = "1.9.0"
+    def appcompat_version = "1.6.1"
+    def material_version = "1.9.0"
     def multidex_version = "2.0.1"
 
     implementation "androidx.multidex:multidex:$multidex_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "androidx.core:core-ktx:1.12.0" 
+    implementation "androidx.core:core-ktx:1.12.0"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
     implementation 'com.otaliastudios:transcoder:0.10.5'
