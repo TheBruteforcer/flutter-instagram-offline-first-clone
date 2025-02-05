@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "794309841892",
+    "project_id": "wsg0-ad254",
+    "storage_bucket": "wsg0-ad254.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794309841892:android:10781fae3ae9b231cfedf1",
+        "android_client_info": {
+          "package_name": "com.oe_works.wsg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794309841892-6h2mjp3esb9qp7gk7k39pmisc2865kf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO2FVY0d_XTjVsaFl6NNs34mTwnTcktNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794309841892-6h2mjp3esb9qp7gk7k39pmisc2865kf8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "794309841892-kkdhme2u2r8fup8ijhskjtubudpq1noa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oeworks.wsg"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
