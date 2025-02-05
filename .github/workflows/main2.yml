@@ -55,6 +55,7 @@ jobs:
           dart pub upgrade
           flutter gen-l10n
           flutter pub get
+          flutter pub add powersync_flutter_libs
           cd android && ./gradlew clean && ./gradlew dependencies --refresh-dependencies && cd ..
           gradle wrapper
           ./gradlew wrapper --gradle-version 8.1 --distribution-type=bin
