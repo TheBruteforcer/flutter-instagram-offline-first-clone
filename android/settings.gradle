@@ -4,6 +4,7 @@ pluginManagement {
         mavenCentral()
         maven { url 'https://jitpack.io' }
         gradlePluginPortal()  // ✅ Fixed
+        maven { url 'https://storage.googleapis.com/download.flutter.io' }
     }
 }
 
