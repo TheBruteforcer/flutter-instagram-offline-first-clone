@@ -55,6 +55,7 @@ jobs:
           cd android && ./gradlew clean && cd ..
           gradle wrapper
           flutter pub cache repair
+          flutter doctor -v
           flutter build apk --release
 
       - name: Upload APK Artifact
