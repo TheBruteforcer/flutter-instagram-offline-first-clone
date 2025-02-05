@@ -42,19 +42,20 @@ android {
         versionName flutterVersionName
         multiDexEnabled true
     }
-
-    signingConfigs {
-        release {
-            def keystorePath = System.getenv("ANDROID_KEYSTORE_PATH") ?: file("release-key.jks").absolutePath
-            def keyAlias = System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "your-key-alias"
-            def keyPassword = System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "your-key-password"
-            def storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "your-store-password"
-
-            storeFile file(keystorePath)
-            keyAlias keyAlias
-            keyPassword keyPassword
-            storePassword storePassword
+        signingConfigs {
+            release {
+                def keystorePath = System.getenv("ANDROID_KEYSTORE_PATH") ?: file("release-key.jks").absolutePath
+                def keyAlias = System.getenv("ANDROID_KEYSTORE_ALIAS") ?: "your-key-alias"
+                def keyPassword = """${System.getenv("ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD") ?: "your-key-password"}"""
+                def storePassword = """${System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: "your-store-password"}"""
+        
+                storeFile file(keystorePath)
+                keyAlias keyAlias
+                keyPassword keyPassword
+                storePassword storePassword
+            }
         }
+
 
         debug {
             storeFile file(System.getenv("ANDROID_KEYSTORE_PATH") ?: file("debug-key.jks").absolutePath)
