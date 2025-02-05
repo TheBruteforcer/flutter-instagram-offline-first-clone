@@ -52,31 +52,6 @@ jobs:
           rm -rf android/.gradle
           rm -rf ~/.gradle/caches
           flutter gen-l10n
-          flutter pub get
-          flutter pub add powersync_flutter_libs
-          flutter pub add photo_manager:^3.0.0
-          flutter pub add app_links
-          flutter pub add blurhash
-          flutter pub add camera
-          flutter pub add firebase_core
-          flutter pub add firebase_messaging
-          flutter pub add firebase_remote_config
-          flutter pub add flutter_plugin_android_lifecycle
-          flutter pub add fluttertoast
-          flutter pub add google_sign_in
-          flutter pub add image_crop
-          flutter pub add image_gallery_saver
-          flutter pub add image_picker
-          flutter pub add path_provider
-          flutter pub add photo_manager
-          flutter pub add shared_preferences
-          flutter pub add sqflite
-          flutter pub add sqlite3_flutter_libs
-          flutter pub add url_launcher
-          flutter pub add video_compress
-          flutter pub add video_player
-          flutter pub add video_thumbnail
-
           cd android && ./gradlew clean && ./gradlew dependencies --refresh-dependencies && cd ..
           gradle wrapper
           ./gradlew wrapper --gradle-version 8.1 --distribution-type=bin
