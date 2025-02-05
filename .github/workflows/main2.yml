@@ -42,9 +42,9 @@ jobs:
       - name: Setup Environment Variables
         run: |
           echo "ANDROID_KEYSTORE_PATH=android/app/release-keystore.jks" >> $GITHUB_ENV
-          echo "ANDROID_KEYSTORE_ALIAS=$(echo -n 'Omar123$' | base64)" >> $GITHUB_ENV
-          echo "ANDROID_KEYSTORE_PASSWORD=$(echo -n 'Omar123$' | base64)" >> $GITHUB_ENV
-          echo "ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD=$(echo -n 'Omar123$' | base64)" >> $GITHUB_ENV
+          echo "ANDROID_KEYSTORE_ALIAS=$(echo -n 'Omar1234' | base64)" >> $GITHUB_ENV
+          echo "ANDROID_KEYSTORE_PASSWORD=$(echo -n 'Omar1234' | base64)" >> $GITHUB_ENV
+          echo "ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD=$(echo -n 'Omar1234' | base64)" >> $GITHUB_ENV
       
 
       - name: Build APK
