@@ -4,7 +4,10 @@ buildscript {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        maven {url 'http://download.flutter.io'}
+        maven {
+            url 'http://download.flutter.io'
+            allowInsecureProtocol = true
+              }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:8.0.2"
@@ -20,9 +23,10 @@ allprojects {
         jcenter()
         maven { url 'https://jitpack.io' }
         maven { url "https://plugins.gradle.org/m2/" }
-            maven {
-        url 'http://download.flutter.io'
-    }
+        maven {
+            url 'http://download.flutter.io'
+            allowInsecureProtocol = true
+              }
     }
 }
 
