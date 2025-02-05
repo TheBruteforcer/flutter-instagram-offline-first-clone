@@ -98,9 +98,7 @@ dependencies {
     def kotlin_version = "1.8.22"  // Downgraded to stable version
     def appcompat_version = "1.6.1" // Defined missing version
     def material_version = "1.9.0"  // Defined missing version
-    implementation "io.flutter:flutter_embedding_debug:1.0.0"
-    implementation "io.flutter:flutter_embedding_release:1.0.0"
-    implementation "io.flutter:flutter_embedding_profile:1.0.0"
+    implementation 'io.flutter:flutter_embedding:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.otaliastudios:transcoder:0.10.5' // Removed duplicate version
     implementation "androidx.core:core-ktx:1.12.0" // Updated from 1.6.0
