@@ -53,7 +53,7 @@ android {
         targetSdk 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        multiDexEnabled true  // Added for large app support
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -98,18 +98,10 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            ndk {
-                debugSymbolLevel 'FULL'
-            }
         }
         debug {
             signingConfig signingConfigs.debug
         }
-    }
-
-    lint {
-        disable 'InvalidPackage'
-        checkReleaseBuilds false
     }
 }
 
@@ -118,5 +110,5 @@ flutter {
 }
 
 dependencies {
-    implementation 'androidx.multidex:multidex:2.0.1'  // Added for large app support
+    implementation 'androidx.multidex:multidex:2.0.1'
 }
