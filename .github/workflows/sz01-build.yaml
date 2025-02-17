@@ -18,11 +18,13 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.3.1"
+          flutter-version: "4.0.0"  # Using Flutter 4.0.0 which includes Dart >=3.3.1
           channel: stable
 
-      - name: Ensure Correct Dart Version
-        run: flutter doctor
+      - name: Upgrade Flutter and Verify Dart Version
+        run: |
+          flutter upgrade
+          dart --version
 
       - name: Install Dependencies
         run: flutter pub get
