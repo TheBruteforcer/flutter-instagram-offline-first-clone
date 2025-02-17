@@ -18,7 +18,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "4.0.0"
+          flutter-version: "4.0.0-0.0.pre"  # Valid pre-release version for beta channel
           channel: beta
 
       - name: Upgrade Flutter and Verify Dart Version
