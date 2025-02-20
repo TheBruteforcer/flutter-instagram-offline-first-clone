@@ -19,9 +19,9 @@ abstract class EnvDev {
   @EnviedField(varName: 'POWERSYNC_URL', obfuscate: true)
   static String powersyncUrl = _EnvDev.powersyncUrl;
 
-  /// Firebase cloud messaging server key secret.
-  @EnviedField(varName: 'FCM_SERVER_KEY', obfuscate: true)
-  static String fcmServerKey = _EnvDev.fcmServerKey;
+  // /// Firebase cloud messaging server key secret.
+  // @EnviedField(varName: 'FCM_SERVER_KEY', obfuscate: true)
+  // static String fcmServerKey = _EnvDev.fcmServerKey;
 
   /// iOS client id key secret.
   @EnviedField(varName: 'IOS_CLIENT_ID', obfuscate: true)

@@ -1338,7 +1338,7 @@ values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 
     final headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
-      HttpHeaders.authorizationHeader: 'key=${EnvProd.fcmServerKey}',
+      // HttpHeaders.authorizationHeader: 'key=${EnvProd.fcmServerKey}',
     };
 
     final res = await Dio().post<String>(

@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.emilzulufov.instagramOfflineFirstClone" "\0"
+            VALUE "CompanyName", "com.gambley1.flutterInstagramClone" "\0"
             VALUE "FileDescription", "flutter_instagram_offline_first_clone" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "flutter_instagram_offline_first_clone" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.emilzulufov.instagramOfflineFirstClone. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.gambley1.flutterInstagramClone. All rights reserved." "\0"
             VALUE "OriginalFilename", "flutter_instagram_offline_first_clone.exe" "\0"
             VALUE "ProductName", "Flutter Instagram Offline First Clone" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

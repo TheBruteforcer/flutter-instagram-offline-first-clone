@@ -1,4 +1,4 @@
-package com.emilzulufov.flutter_instagram_offline_first_clone
+package com.gambley1.flutter_instagram_clone
 
 import io.flutter.embedding.android.FlutterActivity
 

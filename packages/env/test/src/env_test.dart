@@ -17,10 +17,10 @@ void main() {
         expect(EnvDev.powersyncUrl, isNotNull);
         logD(EnvDev.powersyncUrl);
       });
-      test('fcm server key not null', () {
-        expect(EnvDev.fcmServerKey, isNotNull);
-        logD(EnvDev.fcmServerKey);
-      });
+      // test('fcm server key not null', () {
+      //   expect(EnvDev.fcmServerKey, isNotNull);
+      //   logD(EnvDev.fcmServerKey);
+      // });
       test('ios client id not null', () {
         expect(EnvDev.iOSClientId, isNotNull);
         logD(EnvDev.iOSClientId);
@@ -43,10 +43,10 @@ void main() {
         expect(EnvProd.powersyncUrl, isNotNull);
         logD(EnvProd.powersyncUrl);
       });
-      test('fcm server key not null', () {
-        expect(EnvProd.fcmServerKey, isNotNull);
-        logD(EnvProd.fcmServerKey);
-      });
+      // test('fcm server key not null', () {
+      //   expect(EnvProd.fcmServerKey, isNotNull);
+      //   logD(EnvProd.fcmServerKey);
+      // });
       test('ios client id not null', () {
         expect(EnvProd.iOSClientId, isNotNull);
         logD(EnvProd.iOSClientId);

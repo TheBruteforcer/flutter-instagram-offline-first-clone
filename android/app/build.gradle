@@ -30,7 +30,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.emilzulufov.flutter_instagram_offline_first_clone"
+    namespace "com.gambley1.flutter_instagram_clone"
     compileSdk 34
     ndkVersion flutter.ndkVersion
 
@@ -48,7 +48,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.emilzulufov.flutter_instagram_offline_first_clone"
+        applicationId "com.gambley1.flutter_instagram_clone"
         minSdk 24
         targetSdk 34
         versionCode flutterVersionCode.toInteger()
@@ -83,7 +83,7 @@ android {
         }
         staging {
             dimension "default"
-            applicationIdSuffix ".stg"
+            applicationIdSuffix ".staging"
             manifestPlaceholders = [appName: "[STG] Flutter Instagram Offline First Clone"]
         }
         development {
@@ -111,4 +111,5 @@ flutter {
 
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.otaliastudios:transcoder:0.9.1'
 }
