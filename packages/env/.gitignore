@@ -44,12 +44,12 @@ app.*.map.json
 coverage
 
 # Env relate
-.env.dev
-.env.prod
+# .env.dev
+# .env.prod
 
 # Generated env
-lib/src/env.dev.g.dart
-lib/src/env.prod.g.dart
+# lib/src/env.dev.g.dart
+# lib/src/env.prod.g.dart
 
 # FVM Version Cache
 .fvm/
